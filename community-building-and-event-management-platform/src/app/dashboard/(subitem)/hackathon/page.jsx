@@ -1,62 +1,118 @@
-"use client";
-import Link from "next/link";
+"use client"
+import React, { useState, useEffect } from 'react';
 
-const Hackathons = () => {
-  const hackathons = [
-    {
-      id: 1,
-      name: "AI Innovation Challenge",
-      date: "March 15, 2025",
-      location: "Online",
-      description: "Build AI-powered solutions to real-world problems.",
-    },
-    {
-      id: 2,
-      name: "Cybersecurity Hackfest",
-      date: "April 5, 2025",
-      location: "San Francisco, CA",
-      description: "Test your hacking skills in this cybersecurity challenge!",
-    },
-    {
-      id: 3,
-      name: "Blockchain Revolution Hackathon",
-      date: "May 10, 2025",
-      location: "New York, NY",
-      description: "Create decentralized applications and innovative blockchain solutions.",
-    },
-  ];
+const mockHackathons = [
+  {
+    id: 1,
+    title: "AI Innovation Hackathon",
+    location: "San Francisco, CA",
+    submission_period_dates: "March 15-17, 2025",
+    url: "#",
+    prize_amount: "$10,000",
+    description: "Build the next generation of AI applications"
+  },
+  {
+    id: 2,
+    title: "Global Climate Tech Challenge",
+    location: "Online",
+    submission_period_dates: "April 1-3, 2025",
+    url: "#",
+    prize_amount: "$15,000",
+    description: "Solving climate challenges with technology"
+  },
+  {
+    id: 3,
+    title: "Web3 DeFi Hackathon",
+    location: "London, UK",
+    submission_period_dates: "April 20-22, 2025",
+    url: "#",
+    prize_amount: "$12,000",
+    description: "Creating the future of decentralized finance"
+  }
+];
+
+const HackathonList = () => {
+  const [hackathons, setHackathons] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchHackathons = async () => {
+      try {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setHackathons(mockHackathons);
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to fetch hackathons");
+        setLoading(false);
+      }
+    };
+
+    fetchHackathons();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-700"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+          <div className="text-center text-red-500">{error}</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-[#4A154B] to-[#F5F5F5] p-6">
-      <h1 className="text-3xl md:text-5xl font-bold text-[#4A154B] mb-8 text-center">Explore Hackathons</h1>
-      <p className="text-lg text-gray-800 mb-10 text-center max-w-2xl">
-        Apply individually or find team members with matching skills to participate in upcoming hackathons.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-        {hackathons.map((hackathon) => (
-          <div 
-            key={hackathon.id} 
-            className="p-6 bg-[#FAF3F0] shadow-xl rounded-2xl text-center hover:shadow-2xl transition-all border border-gray-300 hover:bg-[#E0B0FF]">
-            <h2 className="text-2xl font-semibold mb-2 text-[#4A154B]">{hackathon.name}</h2>
-            <p className="text-gray-700">{hackathon.date} | {hackathon.location}</p>
-            <p className="text-gray-600 mt-2">{hackathon.description}</p>
-            <div className="mt-4 flex justify-center gap-4">
-              <Link href={`/hackathons/apply/${hackathon.id}`} passHref>
-                <button className="bg-[#4A154B] text-white px-4 py-2 rounded-lg shadow-md hover:bg-[#320A35] transition-all">
-                  Apply Individually
-                </button>
-              </Link>
-              <Link href={`/hackathons/team/${hackathon.id}`} passHref>
-                <button className="bg-[#FFB6C1] text-[#4A154B] px-4 py-2 rounded-lg shadow-md hover:bg-[#FF8095] transition-all">
-                  Find Team
-                </button>
-              </Link>
-            </div>
+    <div className="min-h-screen bg-gradient-to-r from-[#4A154B] to-[#F5F5F5] p-6">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-white mb-8">
+          Upcoming Hackathons
+        </h2>
+
+        {hackathons.length === 0 ? (
+          <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
+            <div className="text-center text-gray-500">No upcoming hackathons found.</div>
           </div>
-        ))}
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {hackathons.map((hackathon) => (
+              <div 
+                key={hackathon.id}
+                className="bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
+                <h3 className="text-xl font-semibold text-gray-800 mb-4">{hackathon.title}</h3>
+                <div className="space-y-2">
+                  <p className="text-gray-600">
+                    <span className="font-medium">Location:</span> {hackathon.location}
+                  </p>
+                  <p className="text-gray-600">
+                    <span className="font-medium">Date:</span> {hackathon.submission_period_dates}
+                  </p>
+                  <p className="text-gray-600">
+                    <span className="font-medium">Prize Pool:</span> {hackathon.prize_amount}
+                  </p>
+                  <p className="text-gray-700 mt-2">{hackathon.description}</p>
+                  <button 
+                    className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors duration-300 w-full"
+                    onClick={() => window.open(hackathon.url, '_blank')}
+                  >
+                    Learn More
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-export default Hackathons;
+export default HackathonList;
