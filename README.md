@@ -1,7 +1,7 @@
 # Community Building and Event Management Platform
 
 ## Overview
-The **Community Building and Event Management Platform** is a web-based application designed to help college students connect, collaborate, and engage with their peers. This platform enables students to find hackathon teammates, discover flatmates, and participate in campus events efficiently. The system fosters community interaction through seamless group formation, event organization, and real-time communication.
+The **ConnectEd: Community Building and Event Management Platform** is a web-based application designed to help college students connect, collaborate, and engage with their peers. This platform enables students to find hackathon teammates, discover flatmates, and participate in campus events efficiently. The system fosters community interaction through seamless group formation, event organization, and real-time communication.
 
 ## Features
 ### Community Platform
