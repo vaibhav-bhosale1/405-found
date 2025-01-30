@@ -70,7 +70,7 @@ const HackathonList = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#4A154B] to-[#F5F5F5] p-6">
+    <div className="min-h-screen mt-24 p-6">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-white mb-8">
           Upcoming Hackathons

@@ -24,7 +24,7 @@ const FlatmateFinder = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#4A154B] to-[#F5F5F5] p-8 flex flex-col items-center">
+    <div className="min-h-screen mt-24 p-8 flex flex-col items-center">
       {/* Title */}
       <motion.h2
         className="text-4xl font-bold text-white mb-8 text-center"
@@ -37,7 +37,7 @@ const FlatmateFinder = () => {
 
       {/* Selection Cards */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl mt-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}

@@ -80,7 +80,7 @@ const FlatFinder = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#4A154B] to-[#F5F5F5] p-8 flex flex-col items-center">
+    <div className="min-h-screen  p-8 flex flex-col items-center">
       {/* Title */}
       <motion.h2
         className="text-4xl font-bold text-white mb-6 text-center"

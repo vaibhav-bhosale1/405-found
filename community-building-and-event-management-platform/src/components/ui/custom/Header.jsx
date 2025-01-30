@@ -22,7 +22,7 @@ const Header = () => {
   if (!mounted) return null;
 
   return (
-    <header className="flex justify-between items-center p-4 shadow-sm bg-white">
+    <header className="flex justify-between items-center p-4 shadow-sm bg-purple-100">
       {/* Logo */}
       <Link href="/">
         <h1 className="text-xl font-bold">ConnectEd</h1>
@@ -31,9 +31,9 @@ const Header = () => {
       {/* Desktop Navigation Links */}
       <ul className="hidden md:flex gap-6 items-center">
         <NavLink href="/dashboard" label="Dashboard" path={path} />
-        <NavLink href="/features" label="Features" path={path} />
-        <NavLink href="/pricing" label="Pricing" path={path} />
-        <NavLink href="/howitworks" label="How it Works?" path={path} />
+        <NavLink href="/dashboard/hackathon" label="Hackathon" path={path} />
+        <NavLink href="/dashboard/flatmates" label="Accomodation" path={path} />
+        <NavLink href="/dashboard/events" label="Events" path={path} />
         <NavLink href="/contact" label="Contact" path={path} />
       </ul>
 
