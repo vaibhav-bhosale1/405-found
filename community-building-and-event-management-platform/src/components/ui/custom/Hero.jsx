@@ -11,7 +11,7 @@ const Hero = () => {
         </h1>
         <p className='text-gray-400 font-semibold'>Your personal trip planner,Don't wait plan instantly</p>
        
-        <Link href={'/'}> 
+        <Link href={'/dashboard'}> 
        <Button>Get Started,Its free</Button>
        </Link> 
     </div>
